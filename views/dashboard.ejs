@@ -14,8 +14,12 @@
         <h2>Overview</h2>
         <section class="overview">
             <div class="box" id="totalFileCount">
+
+                <!-- <div class="box" id="totalFile"> -->
                 <h2>Total File</h2>
-                <p>1,564</p>
+                <p>1,555</p>
+                <!-- </div> -->
+
             </div>
             <div class="box" id="totalFileSize">
                 <h2>Total Size</h2>
@@ -72,37 +76,40 @@
         <!-- Section 2: List of Files -->
         <section class="file-list">
             <h2>List of Files</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>File Name</th>
-                        <th>size</th>
-                        <th>serviceName</th>
-                        <th>location</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% filesData.forEach(file=> { %>
+            <div class="table-container">
+                <table>
+                    <thead>
                         <tr>
-                            <td>
-                                <%= file.fileName %>
-                            </td>
-                            <td>
-                                <%= file.size %>
-                            </td>
-                            <td>
-                                <%= file.serviceName %>
-                            </td>
-                            <td>
-                                <%= file.location %>
-                            </td>
-                            <td><button class="download-btn">Download</button><button class="purge-btn">Purge</button>
-                            </td>
+                            <th>File Name</th>
+                            <th>Size</th>
+                            <th>Service Name</th>
+                            <th>Location</th>
+                            <th>Action</th>
                         </tr>
-                        <% }); %>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <% filesData.forEach(file=> { %>
+                            <tr>
+                                <td>
+                                    <%= file.fileName %>
+                                </td>
+                                <td>
+                                    <%= file.size %>
+                                </td>
+                                <td>
+                                    <%= file.serviceName %>
+                                </td>
+                                <td>
+                                    <%= file.location %>
+                                </td>
+                                <td><button class="download-btn">Download</button><button
+                                        class="purge-btn">Purge</button>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </div>
 </body>

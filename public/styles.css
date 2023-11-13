@@ -14,17 +14,75 @@ body {
 .overview {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-.box {
+
+/* .box {
     flex: 1;
     margin: 5px;
-    padding: 15px;
+    padding: 10px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    /* max-width: none */
+    text-align: center;
+    
+    
+} */
+
+.box {
+    flex: 1;
+    /* padding: 5px; */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* Display content in a column */
+    align-items: center;
+    /* Center content horizontally */
+    border-radius: 5px;
+    margin: 5px;
+    transition: transform 0.3s ease;
+    /* Add transition for a smooth hover effect */
+}
+
+
+/* Adjust font size and margin for better spacing */
+
+.box h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.box-content {
+    display: flex;
+    padding: 3px;
+    align-items: center;
+    /* Center content horizontally */
+    justify-content: center;
+    /* Center content vertically */
+}
+
+
+/* 
+.value {
+    font-size: 28px;
+    
+    margin: 0;
+} */
+
+.box p {
+    font-size: 25px;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.icon {
+    width: 20px;
+    /* Adjust the icon size as needed */
+    margin-left: 5px;
+    /* Add space between the value and the icon */
 }
 
 .file-list,
@@ -37,6 +95,23 @@ table {
     border-collapse: collapse;
 }
 
+.table-container {
+    max-height: 300px;
+    /* Set the maximum height for the table container */
+    overflow-y: auto;
+    /* margin-top: 30px; */
+    /* padding: 2px; */
+    /* Add margin to keep the tbody below the fixed headers */
+    /* Enable vertical scrolling */
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+    z-index: 1;
+}
+
 th,
 td {
     border: 1px solid #ddd;
@@ -46,6 +121,9 @@ td {
 
 th {
     background-color: #979797;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
 .purge-btn {
@@ -66,4 +144,12 @@ th {
     padding: 8px 12px;
     cursor: pointer;
     border-radius: 6px;
+}
+
+
+/* Add hover effect */
+
+.box:hover {
+    transform: scale(1.05);
+    /* Scale up the box on hover */
 }
