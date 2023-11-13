@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Log Analyzer Dashboard</title>
+</head>
+
+<body>
+    <div class="dashboard">
+        <!-- Section 1: Overview -->
+        <h2>Overview</h2>
+        <section class="overview">
+            <div class="box" id="totalFileCount">
+                <h2>Total File</h2>
+                <p>1,564</p>
+            </div>
+            <div class="box" id="totalFileSize">
+                <h2>Total Size</h2>
+                <p>15gb</p>
+            </div>
+            <div class="box" id="totalServices">
+                <h2>Total Services</h2>
+                <p>25</p>
+            </div>
+            <div class="box" id="totalFileCount">
+                <h2>Level</h2>
+                <p>Normal</p>
+            </div>
+            <div class="box" id="uptime">
+                <h2>Uptime</h2>
+                <p>9hrs</p>
+            </div>
+        </section>
+
+
+
+        <!-- Section 3: List of Services -->
+        <section class="service-list">
+            <h2>List of Services</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service Name</th>
+                        <th>Log Path</th>
+                        <th>Size</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% servicesData.forEach(service=> { %>
+                        <tr>
+                            <td>
+                                <%= service.serviceName %>
+                            </td>
+                            <td>
+                                <%= service.logPath %>
+                            </td>
+                            <td>
+                                <%= service.size %>
+                            </td>
+                            <td><button class="download-btn">Download</button><button class="purge-btn">Purge</button>
+                            </td>
+
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </section>
+        <!-- Section 2: List of Files -->
+        <section class="file-list">
+            <h2>List of Files</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>size</th>
+                        <th>serviceName</th>
+                        <th>location</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% filesData.forEach(file=> { %>
+                        <tr>
+                            <td>
+                                <%= file.fileName %>
+                            </td>
+                            <td>
+                                <%= file.size %>
+                            </td>
+                            <td>
+                                <%= file.serviceName %>
+                            </td>
+                            <td>
+                                <%= file.location %>
+                            </td>
+                            <td><button class="download-btn">Download</button><button class="purge-btn">Purge</button>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</body>
+
+</html>
