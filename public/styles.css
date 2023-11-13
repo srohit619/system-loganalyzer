@@ -90,12 +90,20 @@ body {
     margin-bottom: 30px;
 }
 
+
+/* .service-list {
+    background-color: #ffffff;
+    border-radius: 5px;
+} */
+
 table {
     width: 100%;
     border-collapse: collapse;
 }
 
 .table-container {
+    background-color: #fff;
+    border-radius: 5px;
     max-height: 300px;
     /* Set the maximum height for the table container */
     overflow-y: auto;
@@ -114,20 +122,20 @@ thead {
 
 th,
 td {
-    border: 1px solid #ddd;
+    border: 0px solid #ddd;
     padding: 10px;
     text-align: left;
 }
 
 th {
-    background-color: #979797;
+    background-color: rgb(183, 203, 214);
     position: sticky;
     top: 0;
     z-index: 2;
 }
 
 .purge-btn {
-    background-color: #dc3545;
+    background-color: #df4a4a;
     color: #fff;
     border: none;
     padding: 8px 12px;
@@ -149,7 +157,11 @@ th {
 
 /* Add hover effect */
 
+
+/* Additional styles for light hover effect */
+
 .box:hover {
+    background-color: #e9ecef;
+    /* Light background color on hover */
     transform: scale(1.05);
-    /* Scale up the box on hover */
 }

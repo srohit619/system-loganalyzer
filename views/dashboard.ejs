@@ -44,34 +44,37 @@
         <!-- Section 3: List of Services -->
         <section class="service-list">
             <h2>List of Services</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Service Name</th>
-                        <th>Log Path</th>
-                        <th>Size</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% servicesData.forEach(service=> { %>
+            <div class="table-container">
+                <table>
+                    <thead>
                         <tr>
-                            <td>
-                                <%= service.serviceName %>
-                            </td>
-                            <td>
-                                <%= service.logPath %>
-                            </td>
-                            <td>
-                                <%= service.size %>
-                            </td>
-                            <td><button class="download-btn">Download</button><button class="purge-btn">Purge</button>
-                            </td>
-
+                            <th>Service Name</th>
+                            <th>Log Path</th>
+                            <th>Size</th>
+                            <th>Action</th>
                         </tr>
-                        <% }); %>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <% servicesData.forEach(service=> { %>
+                            <tr>
+                                <td>
+                                    <%= service.serviceName %>
+                                </td>
+                                <td>
+                                    <%= service.logPath %>
+                                </td>
+                                <td>
+                                    <%= service.size %>
+                                </td>
+                                <td><button class="download-btn">Download</button><button
+                                        class="purge-btn">Purge</button>
+                                </td>
+
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
         </section>
         <!-- Section 2: List of Files -->
         <section class="file-list">
