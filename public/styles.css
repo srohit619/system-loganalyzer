@@ -7,8 +7,9 @@ body {
 .dashboard {
     max-width: 1200px;
     margin: 20px auto;
-    padding: 20px;
-    background-color: #f4f4f4;
+    padding: 30px;
+    background-color: #f3f3f3;
+    border-radius: 5px;
 }
 
 .overview {
@@ -87,7 +88,7 @@ body {
 
 .file-list,
 .service-list {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 
@@ -164,4 +165,28 @@ th {
     background-color: #e9ecef;
     /* Light background color on hover */
     transform: scale(1.05);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dashboard-title {
+    margin: 0;
+}
+
+.generate-report-btn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.generate-report-btn:hover {
+    background-color: #218838;
 }
