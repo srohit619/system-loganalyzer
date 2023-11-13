@@ -190,3 +190,29 @@ th {
 .generate-report-btn:hover {
     background-color: #218838;
 }
+
+
+/* Add styles for the status indicator */
+
+.status-indicator {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+.status-indicator.normal {
+    background-color: #28a745;
+    /* Green */
+}
+
+.status-indicator.medium {
+    background-color: #ffc107;
+    /* Orange */
+}
+
+.status-indicator.high {
+    background-color: #dc3545;
+    /* Red */
+}
