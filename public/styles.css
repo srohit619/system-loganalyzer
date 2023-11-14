@@ -5,7 +5,7 @@ body {
 }
 
 .dashboard {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 20px auto;
     padding: 30px;
     background-color: #f3f3f3;
@@ -185,6 +185,7 @@ th {
     padding: 10px 15px;
     cursor: pointer;
     border-radius: 6px;
+    margin-left: 910px;
 }
 
 .generate-report-btn:hover {
@@ -237,4 +238,24 @@ td:nth-child(1) {
     /* Adjust the width for the first column */
     width: 25%;
     /* You can adjust the width as needed */
+}
+
+.refresh-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    /* Adjust the margin to your preference */
+}
+
+.refresh-btn i {
+    font-size: 18px;
+}
+
+
+/* Adjust the margin or padding to create space between the buttons */
+
+.generate-report-btn {
+    /* margin-right: 5px; */
+    /* Adjust the margin to your preference */
 }

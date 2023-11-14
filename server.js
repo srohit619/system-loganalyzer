@@ -103,12 +103,14 @@ function getListOfLogFiles() {
         // const filePath = path.join(logFolder[1], file);
         const filePath = path.join(logFolder[1]);
         const stats = fs.statSync(path.join(logFolder[1], file));
+        const creationDate = stats.birthtime.toISOString().split("T")[0]; // Format: YYYY-MM-DD
 
         logFiles.push({
           serviceName,
           fileName: file,
           size: formatSize(stats.size),
           path: filePath,
+          creationDate,
         });
       }
     } catch (err) {

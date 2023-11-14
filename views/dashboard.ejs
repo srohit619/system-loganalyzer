@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <!-- Add this line in the head section of your HTML -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- <script src="script.js?version=1.0"></script> -->
 
     <title>Log Analyzer Dashboard</title>
@@ -17,7 +20,13 @@
         <!-- Title and Generate Report Button -->
         <div class="header">
             <h1 class="dashboard-title">Log Analyzer</h1>
-            <button class="generate-report-btn">Generate Report</button>
+            <!-- <button class="generate-report-btn">Generate Report</button> -->
+            <button class="generate-report-btn" onclick="generateReport()">
+                Generate Report
+            </button>
+            <button class="refresh-btn" onclick="refreshData()">
+                <i class="fas fa-sync-alt"></i> <!-- Font Awesome refresh icon -->
+            </button>
         </div>
         <!-- Section 1: Overview -->
         <h2>Overview</h2>
@@ -74,7 +83,7 @@
 
         <!-- Section 3: List of Services -->
         <section class="service-list">
-            <h2>List of Services</h2>
+            <h2>By Services</h2>
             <div class="table-container">
                 <table>
                     <thead>
@@ -98,7 +107,7 @@
                                     <%= service.logFolderSize %>
                                 </td>
                                 <td><button class="download-btn">Download</button><button
-                                        class="purge-btn">Purge</button>
+                                        class="purge-btn">Delete</button>
                                 </td>
 
                             </tr>
@@ -109,12 +118,13 @@
         </section>
         <!-- Section 2: List of Files -->
         <section class="file-list">
-            <h2>List of Files</h2>
+            <h2>By Files</h2>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
                             <th>File Name</th>
+                            <th>Created on</th>
                             <th>Size</th>
                             <th>Service Name</th>
                             <th>Location</th>
@@ -126,6 +136,9 @@
                             <tr>
                                 <td>
                                     <%= file.fileName %>
+                                </td>
+                                <td>
+                                    <%= file.creationDate %>
                                 </td>
                                 <td>
                                     <%= file.size %>
@@ -142,7 +155,7 @@
                                 <td>
                                     <div class="button-container">
                                         <button class="download-btn">Download</button>
-                                        <button class="purge-btn">Purge</button>
+                                        <button class="purge-btn">Delete</button>
                                     </div>
                                 </td>
                             </tr>
@@ -154,6 +167,12 @@
     </div>
 </body>
 
-
+<script>
+    function refreshData() {
+        // Add logic to refresh or fetch data from the server
+        // For example, you can reload the page to refresh all data
+        location.reload();
+    }
+</script>
 
 </html>
