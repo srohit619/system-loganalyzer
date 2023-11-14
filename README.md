@@ -8,8 +8,12 @@ Log Analyzer is a web application built with Node.js and Express.js for analyzin
 ## Features
 
 - Overview of log file statistics.
+- Generate Report
 - List of log files with the ability to purge individual files.
 - List of services generating logs with the ability to purge entire log folders.
+
+---
+**NOTE**: Download,Delete and Generate Button Functionality is Still Not Uploaded to the Branch
 
 ## Installation
 
