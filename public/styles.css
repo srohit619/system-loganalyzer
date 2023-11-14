@@ -8,7 +8,7 @@ body {
     max-width: 1300px;
     margin: 20px auto;
     padding: 30px;
-    background-color: #f3f3f3;
+    background-color: #e2e7f1;
     border-radius: 5px;
 }
 
@@ -258,4 +258,40 @@ td:nth-child(1) {
 .generate-report-btn {
     /* margin-right: 5px; */
     /* Adjust the margin to your preference */
+}
+
+
+/* Tooltip container */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+
+/* Tooltip text */
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+
+/* Show the tooltip text when hovering over the icon */
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }
