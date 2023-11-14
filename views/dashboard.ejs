@@ -24,30 +24,40 @@
 
                 <!-- <div class="box" id="totalFile"> -->
                 <h2>Total File</h2>
-                <p>1,555</p>
+                <!-- <p>1,555</p> -->
+                <p>
+                    <%= overview.file %>
+                </p>
                 <!-- </div> -->
 
             </div>
             <div class="box" id="totalFileSize">
                 <h2>Total Size</h2>
-                <p>15gb</p>
+                <!-- <p>15gb</p> -->
+                <p>
+                    <%= overview.size %>
+                </p>
+
             </div>
             <div class="box" id="totalServices">
                 <h2>Total Services</h2>
-                <p>25</p>
+                <p>
+                    <%= overview.totalMicroservices %>
+                </p>
             </div>
-            <div class="box" id="totalFileCount">
-                <h2>Level</h2>
-                <p>High <span class="status-indicator high"></span></p>
+            <div class="box" id="status">
+                <h2>Status</h2>
 
-                <div class="box-content">
-                    <!-- <h2>Level</h2> -->
-                    <!-- <p class="value">Normal</p> -->
-                </div>
+                <p>
+                    <%= overview.level %> <span class="status-indicator normal"></span>
+                </p>
+
             </div>
             <div class="box" id="uptime">
                 <h2>Uptime</h2>
-                <p>9hrs</p>
+                <p>
+                    <%= overview.uptime %>
+                </p>
             </div>
         </section>
 
@@ -73,10 +83,10 @@
                                     <%= service.serviceName %>
                                 </td>
                                 <td>
-                                    <%= service.logPath %>
+                                    <%= service.logFolderPath %>
                                 </td>
                                 <td>
-                                    <%= service.size %>
+                                    <%= service.logFolderSize %>
                                 </td>
                                 <td><button class="download-btn">Download</button><button
                                         class="purge-btn">Purge</button>
@@ -115,10 +125,16 @@
                                     <%= file.serviceName %>
                                 </td>
                                 <td>
-                                    <%= file.location %>
+                                    <%= file.path %>
                                 </td>
-                                <td><button class="download-btn">Download</button><button
-                                        class="purge-btn">Purge</button>
+                                <!-- <td><button class="download-btn">Download</button>
+                                    <button class="purge-btn">Purge</button>
+                                </td> -->
+                                <td>
+                                    <div class="button-container">
+                                        <button class="download-btn">Download</button>
+                                        <button class="purge-btn">Purge</button>
+                                    </div>
                                 </td>
                             </tr>
                             <% }); %>

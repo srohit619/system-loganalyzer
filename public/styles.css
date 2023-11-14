@@ -216,3 +216,25 @@ th {
     background-color: #dc3545;
     /* Red */
 }
+
+.button-container {
+    display: flex;
+}
+
+.button-container button {
+    margin-right: 5px;
+    /* Adjust the margin as needed */
+}
+
+
+/* ///////////// */
+
+
+/* Add the following styles to your existing CSS */
+
+th:nth-child(1),
+td:nth-child(1) {
+    /* Adjust the width for the first column */
+    width: 25%;
+    /* You can adjust the width as needed */
+}
