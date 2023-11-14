@@ -23,19 +23,35 @@ if (configData.inUse == "ideal6") {
 app.set("view engine", "ejs");
 app.use(express.static("public")); // Assuming your CSS file is in a 'public' folder
 
-// Routes
+// Define your getStatusIndicatorClass function
+function getStatusIndicatorClass(level) {
+  switch (level.toLowerCase()) {
+    case "normal":
+      return "normal";
+    case "medium":
+      return "medium";
+    case "high":
+      return "high";
+    default:
+      return "normal";
+  }
+}
+
 app.get("/", (req, res) => {
-  //   res.render("dashboard"); // Assuming your EJS file is named 'dashboard.ejs'
+  // Simulated data, replace this with your actual data
+  const overviewData = {
+    file: getLogFilesCount(),
+    size: getTotalLogSize(),
+    totalMicroservices: logFolders.length,
+    level: "medium",
+    uptime: "9hrs",
+  };
+
   res.render("dashboard", {
+    overview: overviewData,
+    getStatusIndicatorClass: getStatusIndicatorClass,
     filesData: getListOfLogFiles(),
     servicesData: getLogFolderDetails(),
-    overview: {
-      file: getLogFilesCount(),
-      size: getTotalLogSize(),
-      totalMicroservices: logFolders.length,
-      level: "Normal",
-      uptime: "9hrs",
-    },
   });
 });
 

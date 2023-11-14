@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <!-- <script src="script.js?version=1.0"></script> -->
+
     <title>Log Analyzer Dashboard</title>
 </head>
 
@@ -45,13 +47,20 @@
                     <%= overview.totalMicroservices %>
                 </p>
             </div>
-            <div class="box" id="status">
+            <!-- <div class="box" id="status">
                 <h2>Status</h2>
 
                 <p>
                     <%= overview.level %> <span class="status-indicator normal"></span>
                 </p>
 
+            </div> -->
+            <div class="box" id="status">
+                <h2>Status</h2>
+                <p>
+                    <%= overview.level %>
+                        <span class="status-indicator <%= getStatusIndicatorClass(overview.level) %>"></span>
+                </p>
             </div>
             <div class="box" id="uptime">
                 <h2>Uptime</h2>
@@ -144,6 +153,7 @@
         </section>
     </div>
 </body>
+
 
 
 </html>
