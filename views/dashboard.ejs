@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <!-- Add this line in the head section of your HTML -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 
-    <!-- <script src="script.js?version=1.0"></script> -->
-
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
     <title>Log Analyzer Dashboard</title>
 </head>
 
@@ -25,7 +29,7 @@
                 Generate Report
             </button>
             <button class="refresh-btn" onclick="refreshData()">
-                <i class="fas fa-sync-alt"></i> <!-- Font Awesome refresh icon -->
+                Reload
             </button>
         </div>
         <!-- Section 1: Overview -->
@@ -106,8 +110,21 @@
                                 <td>
                                     <%= service.logFolderSize %>
                                 </td>
-                                <td><button class="download-btn">Download</button><button
-                                        class="purge-btn">Delete</button>
+                                <!-- <td>
+
+                                    <a href="/download/folder/<%= service.logFolderPath %>"
+                                        class="download-btn">Download</a>
+
+                                    <button class="purge-btn">Delete</button>
+                                </td> -->
+                                <td>
+                                    <div class="button-container">
+                                        <a href="/download/file/<%= service.logFolderPath %>/"
+                                            class="download-btn">Download
+                                        </a>
+
+                                        <button class="purge-btn">Delete</button>
+                                    </div>
                                 </td>
 
                             </tr>
@@ -154,7 +171,9 @@
                                 </td> -->
                                 <td>
                                     <div class="button-container">
-                                        <button class="download-btn">Download</button>
+                                        <a href="/download/file/<%= file.fileName %>/" class="download-btn">Download
+                                        </a>
+
                                         <button class="purge-btn">Delete</button>
                                     </div>
                                 </td>

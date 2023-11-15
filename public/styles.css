@@ -52,7 +52,7 @@ body {
 /* Adjust font size and margin for better spacing */
 
 .box h2 {
-    font-size: 18px;
+    font-size: 15px;
     margin-bottom: 10px;
 }
 
@@ -64,14 +64,6 @@ body {
     justify-content: center;
     /* Center content vertically */
 }
-
-
-/* 
-.value {
-    font-size: 28px;
-    
-    margin: 0;
-} */
 
 .box p {
     font-size: 25px;
@@ -129,7 +121,7 @@ td {
 }
 
 th {
-    background-color: rgb(183, 203, 214);
+    background-color: rgb(213, 216, 218);
     position: sticky;
     top: 0;
     z-index: 2;
@@ -184,8 +176,8 @@ th {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    border-radius: 6px;
-    margin-left: 910px;
+    border-radius: 20px;
+    margin-left: 895px;
 }
 
 .generate-report-btn:hover {
@@ -241,24 +233,21 @@ td:nth-child(1) {
 }
 
 .refresh-btn {
-    background-color: transparent;
+    background-color: rgb(49, 109, 199);
+    color: #f5f5f5;
     border: none;
+    padding: 10px 15px;
     cursor: pointer;
+    border-radius: 20px;
     margin-left: 5px;
-    /* Adjust the margin to your preference */
 }
 
-.refresh-btn i {
-    font-size: 18px;
+.refresh-btn:hover {
+    background-color: rgb(41, 93, 160);
 }
 
 
 /* Adjust the margin or padding to create space between the buttons */
-
-.generate-report-btn {
-    /* margin-right: 5px; */
-    /* Adjust the margin to your preference */
-}
 
 
 /* Tooltip container */
@@ -294,4 +283,24 @@ td:nth-child(1) {
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+
+
+/* Add styles for the new download links */
+
+.download-btn {
+    margin-left: 5px;
+    background-color: #28a745;
+    /* Green color for download links */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    text-decoration: none;
+    /* Remove underline from links */
+}
+
+.download-btn:hover {
+    background-color: #218838;
 }

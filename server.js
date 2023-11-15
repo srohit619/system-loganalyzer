@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 const path = require("path");
 const express = require("express");
+const archiver = require("archiver");
 const fs = require("fs");
 const app = express();
 const dummyData = require("./dummy");
@@ -55,6 +56,50 @@ app.get("/", (req, res) => {
   });
 });
 
+// Download route for files and folders
+app.get("/download/:type/:name/", (req, res) => {
+  const { type, name } = req.params;
+  console.log("req body--->" + JSON.stringify(req.params));
+  console.log("type--->" + type);
+  console.log("name--->" + name);
+  const filePath = path.join(
+    __dirname,
+    "C:\\IMPL_IDEAL6\\idealetl\\Logs\\2023-11-14-result.log",
+    name
+  );
+  console.log("filepath--->" + filePath);
+
+  const filePath1 = path.join(
+    "C:\\IMPL_IDEAL6\\idealetl\\Logs\\2023-11-14-result.log"
+  );
+
+  if (type === "file") {
+    // Download file
+    res.download(filePath1);
+    // res.download(filePath1, name);
+  } else if (type === "folder") {
+    // Download folder as zip
+    const archive = archiver("zip", {
+      zlib: { level: 9 }, // Sets the compression level
+    });
+    const output = fs.createWriteStream(`${__dirname}/temp/${name}.zip`);
+    console.log("output--->" + output);
+
+    archive.pipe(output);
+    archive.directory(filePath, false);
+    archive.finalize();
+
+    output.on("close", () => {
+      res.download(`${__dirname}/temp/${name}.zip`, `${name}.zip`, () => {
+        // Clean up the temporary zip file
+        fs.unlinkSync(`${__dirname}/temp/${name}.zip`);
+      });
+    });
+  } else {
+    res.status(404).send("Invalid download type");
+  }
+});
+
 // Function to count log files from specified log folders
 function getLogFilesCount() {
   let totalLogFiles = 0;
@@ -79,7 +124,7 @@ function getTotalLogSize() {
       const files = fs.readdirSync(logFolder[1]);
       for (const file of files) {
         const filePath = path.join(logFolder[1], file);
-        // console.log("filepath-->" + filePath);
+        // console.log("RSS filepath-->" + filePath);
         const stats = fs.statSync(filePath);
         totalSizeBytes += stats.size;
       }
