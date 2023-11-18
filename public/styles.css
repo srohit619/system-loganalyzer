@@ -304,3 +304,32 @@ td:nth-child(1) {
     margin-right: 10px;
     /* Add margin to separate the logo from the title */
 }
+
+.btn-primary {
+    background-color: rgba(57, 139, 226, 0.733);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    text-decoration: none;
+    /* Remove underline from links */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-left: 5px;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
