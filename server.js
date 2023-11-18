@@ -23,6 +23,8 @@ if (configData.inUse == "ideal6") {
 
 app.set("view engine", "ejs");
 app.use(express.static("public")); // Assuming your CSS file is in a 'public' folder
+// Serve static files from the 'src' folder
+app.use("/src", express.static(path.join(__dirname, "src")));
 
 // Define your getStatusIndicatorClass function
 function getStatusIndicatorClass(level) {

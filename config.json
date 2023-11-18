@@ -6,7 +6,12 @@
       ["idealworkercenter", "../idealworkercenter/Logs"],
       ["idealetl", "../idealetl/Logs"],
       ["standalone", "../wildfly-8.22_uat/standalone/log"],
-      ["Consumers_Java", "../Installation/Consumers_Java/log/Consumer.log"]
+      ["Consumers_Java", "../Installation/Consumers_Java/log/Consumer.log"],
+      ["Consumers_Java", "../Installation/Consumers_Java/log/Consumer.log"],
+      ["Consumers_Java", "../Installation/Consumers_Java/log/Consumer.log"],
+      ["Consumers_Java", "../Installation/Consumers_Java/log/Consumer.log"],
+      ["Consumers_Java", "../Installation/Consumers_Java/log/Consumer.log"],
+      ["Consumers_Java", "../log"]
     ],
     "product": "ideal6"
   },

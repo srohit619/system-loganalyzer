@@ -1,96 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-    </style>
+
     <title>Log Analyzer Dashboard</title>
 </head>
 
 <body>
-    <!-- Add the following button to your existing HTML structure -->
-
     <div class="dashboard">
+
         <!-- Title and Generate Report Button -->
         <div class="header">
-            <h1 class="dashboard-title">Log Analyzer</h1>
-            <!-- <button class="generate-report-btn">Generate Report</button> -->
+            <h1 class="dashboard-title">
+                <img src="/src/logo-main.png" alt="Log Analyzer Logo" class="logo-img"> Log Analyzer
+            </h1>
             <button class="generate-report-btn" onclick="generateReport()">
                 Generate Report
             </button>
             <button class="refresh-btn" onclick="refreshData()">
-                Reload
+                Refresh
             </button>
         </div>
+
         <!-- Section 1: Overview -->
         <h2>Overview</h2>
         <section class="overview">
             <div class="box" id="totalFileCount">
-
-                <!-- <div class="box" id="totalFile"> -->
                 <h2>Total File</h2>
-                <!-- <p>1,555</p> -->
-                <p>
-                    <%= overview.file %>
-                </p>
-                <!-- </div> -->
+                <div class="box-content">
+                    <p><i>
+                            <img src="/src/logfile.png" alt="sss" class="icon-img">
+                        </i></p>
 
+                    <p>
+                        <%= overview.file %>
+                    </p>
+                </div>
             </div>
+
             <div class="box" id="totalFileSize">
                 <h2>Total Size</h2>
-                <!-- <p>15gb</p> -->
-                <p>
-                    <%= overview.size %>
-                </p>
-
+                <div class="box-content">
+                    <p><i>
+                            <img src="/src/storage.png" alt="sss" class="icon-img">
+                        </i></p>
+                    <p>
+                        <%= overview.size %>
+                    </p>
+                </div>
             </div>
+
             <div class="box" id="totalServices">
                 <h2>Total Services</h2>
-                <p>
-                    <%= overview.totalMicroservices %>
-                </p>
+                <div class="box-content">
+                    <p><i>
+                            <img src="/src/services.png" alt="sss" class="icon-img"">
+                        </i></p>
+                    <p>
+                        <%= overview.totalMicroservices %>
+                    </p>
+                </div>
             </div>
-            <!-- <div class="box" id="status">
-                <h2>Status</h2>
 
-                <p>
-                    <%= overview.level %> <span class="status-indicator normal"></span>
-                </p>
+            <div class=" box" id="status">
+                            <h2>Status</h2>
+                            <div class="box-content">
+                                <p><i>
+                                        <img src="/src/status.png" alt="sss" class="icon-img">
+                                    </i></p>
+                                <p>
+                                    <%= overview.level %><span
+                                            class="status-indicator <%= getStatusIndicatorClass(overview.level) %>"></span>
+                                </p>
+                            </div>
+                </div>
 
-            </div> -->
-            <div class="box" id="status">
-                <h2>Status</h2>
-                <p>
-                    <%= overview.level %>
-                        <span class="status-indicator <%= getStatusIndicatorClass(overview.level) %>"></span>
-                </p>
-            </div>
-            <div class="box" id="uptime">
-                <h2>Uptime</h2>
-                <p>
-                    <%= overview.uptime %>
-                </p>
-            </div>
+                <div class="box" id="uptime">
+                    <h2>Uptime</h2>
+                    <div class="box-content">
+                        <p>
+                            <i>
+                                <img src="/src/uptime.png" alt="sss" class="icon-img">
+                            </i>
+                        </p>
+                        <p>
+                            <%= overview.uptime %>
+                        </p>
+                    </div>
+                </div>
         </section>
-
-
 
         <!-- Section 3: List of Services -->
         <section class="service-list">
             <h2>By Services</h2>
-            <div class="table-container">
-                <table>
-                    <thead>
+            <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
                         <tr>
                             <th>Service Name</th>
                             <th>Log Path</th>
@@ -110,35 +121,25 @@
                                 <td>
                                     <%= service.logFolderSize %>
                                 </td>
-                                <!-- <td>
-
-                                    <a href="/download/folder/<%= service.logFolderPath %>"
-                                        class="download-btn">Download</a>
-
-                                    <button class="purge-btn">Delete</button>
-                                </td> -->
                                 <td>
-                                    <div class="button-container">
-                                        <a href="/download/file/<%= service.logFolderPath %>/"
-                                            class="download-btn">Download
-                                        </a>
+                                    <a href="/download/folder/<%= service.logFolderPath %>"
+                                        class="btn btn-primary">Download</a>
 
-                                        <button class="purge-btn">Delete</button>
-                                    </div>
+                                    <button class="btn btn-danger">Delete</button>
                                 </td>
-
                             </tr>
                             <% }); %>
                     </tbody>
                 </table>
             </div>
         </section>
+
         <!-- Section 2: List of Files -->
         <section class="file-list">
             <h2>By Files</h2>
-            <div class="table-container">
-                <table>
-                    <thead>
+            <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
                         <tr>
                             <th>File Name</th>
                             <th>Created on</th>
@@ -166,15 +167,11 @@
                                 <td>
                                     <%= file.path %>
                                 </td>
-                                <!-- <td><button class="download-btn">Download</button>
-                                    <button class="purge-btn">Purge</button>
-                                </td> -->
                                 <td>
                                     <div class="button-container">
-                                        <a href="/download/file/<%= file.fileName %>/" class="download-btn">Download
-                                        </a>
-
-                                        <button class="purge-btn">Delete</button>
+                                        <a href="/download/file/<%= file.fileName %>/<%= file.path %>"
+                                            class="btn btn-primary">Download file</a>
+                                        <button class="btn btn-danger">Delete</button>
                                     </div>
                                 </td>
                             </tr>
@@ -188,8 +185,6 @@
 
 <script>
     function refreshData() {
-        // Add logic to refresh or fetch data from the server
-        // For example, you can reload the page to refresh all data
         location.reload();
     }
 </script>
