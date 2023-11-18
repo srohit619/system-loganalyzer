@@ -11,6 +11,7 @@ const port = process.env.PORT || 8002;
 
 //reads the data from config file
 const configData = require("./config.json");
+// console.log("config" + JSON.stringify(configData));
 
 let logFolders;
 
@@ -20,6 +21,7 @@ if (configData.inUse == "ideal6") {
 } else if (configData.inUse == "iwf6") {
   logFolders = configData.iwf6.logFolders;
 }
+console.log("logFolders--->" + typeof logFolders);
 
 app.set("view engine", "ejs");
 app.use(express.static("public")); // Assuming your CSS file is in a 'public' folder
@@ -58,23 +60,32 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/delete/:type/:name/:servicename", (req, res) => {
+  console.log("endpoint called-->");
+  const { name, servicename } = req.params;
+  console.log("req body-->" + JSON.stringify(req.params));
+  console.log(`RS---> ${getFolderPath(configData, servicename)}/${name}`);
+  fs.unlinkSync(`${getFolderPath(configData, servicename)}/${name}`);
+  res.status(200).send("DELETED");
+});
+
 // Download route for files and folders
-app.get("/download/:type/:name/", (req, res) => {
-  const { type, name } = req.params;
+app.get("/download/:type/:name/:servicename", (req, res) => {
+  console.log("funcion called--->");
+  const { type, name, servicename } = req.params;
   console.log("req body--->" + JSON.stringify(req.params));
   console.log("type--->" + type);
-  console.log("name--->" + name);
+  console.log("servicename--->" + servicename);
   const filePath = path.join(
     __dirname,
-    "C:\\IMPL_IDEAL6\\idealetl\\Logs\\2023-11-14-result.log",
-    name
+    "C:\\IMPL_IDEAL6\\idealetl\\Logs\\2023-11-14-result.log"
   );
   console.log("filepath--->" + filePath);
 
-  const filePath1 = path.join(
-    "C:\\IMPL_IDEAL6\\idealetl\\Logs\\2023-11-14-result.log"
-  );
+  const filePath1 = path.join(getFolderPath(configData, servicename), name);
+  console.log("filpath1-->" + filePath1);
 
+  // const downloadFile =
   if (type === "file") {
     // Download file
     res.download(filePath1);
@@ -102,6 +113,24 @@ app.get("/download/:type/:name/", (req, res) => {
   }
 });
 
+function deleteSingleFile(filename, folderName) {
+  console.log("file--->" + file);
+  console.log("folderName--->" + folderName);
+}
+
+function getFolderPath(config, serviceName) {
+  const inUseProduct = config.inUse;
+  if (config.hasOwnProperty(inUseProduct)) {
+    const logFolders = config[inUseProduct].logFolders;
+    for (let i = 0; i < logFolders.length; i++) {
+      if (logFolders[i][0] === serviceName) {
+        return logFolders[i][1];
+      }
+    }
+  }
+  return null; // Service not found
+}
+
 // Function to count log files from specified log folders
 function getLogFilesCount() {
   let totalLogFiles = 0;
@@ -110,6 +139,7 @@ function getLogFilesCount() {
       const files = fs.readdirSync(logFolder[1]);
       // console.log("files-->" + files);
       totalLogFiles += files.length;
+      console.log("totalLogFiles" + totalLogFiles);
     } catch (err) {
       // console.error(`${red}Error reading log folder ${err}${reset}`);
       console.log("errrr");

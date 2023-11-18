@@ -170,10 +170,14 @@
                                 </td>
                                 <td>
                                     <div class="button-container">
-                                        <a href="/download/file/<%= file.fileName %>/<%= file.path %>"
-                                            class="btn btn-primary">Download file</a>
-                                        <button class="btn btn-danger"
-                                            onclick="deleteFolder('<%= file.logFolderPath %>')">Delete</button>
+                                        <a href="/download/file/<%= file.fileName %>/<%=file.serviceName%>"
+                                            class="btn btn-primary">Download
+                                            file</a>
+                                        <a href="/delete/file/<%= file.fileName %>/<%=file.serviceName%>"
+                                            class="btn btn-danger">Delete
+                                            file</a>
+                                        <!-- <button class="btn btn-danger"
+                                            onclick="deleteFolder('<%= file.path %>')">Delete</button> -->
                                     </div>
                                 </td>
                             </tr>
@@ -192,6 +196,11 @@
 
     function downloadFolder(logFolderPath) {
         window.location.href = "/download/folder/" + logFolderPath;
+    }
+
+    function deleteFolder(logFolderPath) {
+        alert(logFolderPath);
+        console.log('logFolderPath-->' + logFolderPath)
     }
 </script>
 
