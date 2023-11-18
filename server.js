@@ -4,7 +4,6 @@ const express = require("express");
 const archiver = require("archiver");
 const fs = require("fs");
 const app = express();
-const dummyData = require("./dummy");
 
 dotenv.config();
 const port = process.env.PORT || 8002;
@@ -112,11 +111,6 @@ app.get("/download/:type/:name/:servicename", (req, res) => {
     res.status(404).send("Invalid download type");
   }
 });
-
-function deleteSingleFile(filename, folderName) {
-  console.log("file--->" + file);
-  console.log("folderName--->" + folderName);
-}
 
 function getFolderPath(config, serviceName) {
   const inUseProduct = config.inUse;
